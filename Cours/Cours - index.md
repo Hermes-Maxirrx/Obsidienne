@@ -10,15 +10,19 @@
 
 [[Index - Conception]] : [[Conception modulaire - SOLID, composition et injection|frontières de modules]], [[Architecture hexagonale - Domaine, ports et limites|domaine et ports]], [[Événements - Outbox, inbox et reprises|événements et reprises]], [[Systèmes distribués - Fiabilité et reprise|défaillances et récupération]].
 
-## 3. Interface et langages
+## 3. Modéliser avant d'implémenter
+
+[[UML - index]] : cas d'utilisation, classes, séquences, activités, états, composants et déploiement — avec une méthode pour choisir la bonne vue et vérifier sa cohérence avec les autres.
+
+## 4. Interface et langages
 
 [[Frontend - index]] : [[TypeScript - types et frontieres runtime|types et données entrantes]], [[React - rendu état effets et asynchrone|rendu et effets]], [[UI - accessibilite et performance|accessibilité et performance]].
 
-## 4. Preuve, livraison et sécurité
+## 5. Preuve, livraison et sécurité
 
 [[Qualite DevOps - index]] : [[Tests - pyramide et TDD|tester la bonne chose]], [[Git - branches PR CI CD et reproductibilite|livrer une révision]], [[Docker et Ansible - images reseaux deploiement|construire et configurer]], [[Sécurité applicative - identité autorisation et sessions|contrôler les accès]], [[DevSecOps - SAST SCA DAST et secrets|interpréter les scanners]].
 
-## 5. Infrastructure et économie
+## 6. Infrastructure et économie
 
 [[Cloud - index]] : [[Cloud - responsabilite IAM reseau et fiabilite|responsabilités et accès]], [[IaC - Bicep Terraform plan et state|plan et état]], [[FinOps - couts budgets et FOCUS|coût et valeur]].
 

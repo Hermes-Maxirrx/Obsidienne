@@ -6,18 +6,21 @@
 ```mermaid
 flowchart LR
     F[Fondations] --> C[Conception]
+    C --> U[UML : plusieurs vues]
     C --> P[Design patterns]
     C --> X[Frontend et API]
     C --> Q[Qualité et livraison]
     Q --> N[Cloud et coûts]
+    U --> R[Projets à étudier]
     P --> R[Projets à étudier]
     X --> R
     N --> R
 ```
 
-## Trois entrées, selon ton besoin
+## Quatre entrées, selon ton besoin
 
 - **Apprendre dans l'ordre** → [[Cours - index|Parcours des notions concrètes]].
+- **Modéliser un système** → [[UML - index|Cours UML détaillé : sept vues, notation et cohérence]].
 - **Décider si un pattern aide** → [[Patterns - index|23 design patterns : intention, schéma, code et limites]].
 - **Comprendre un dépôt précis** → [[Projets - index|Huit projets expliqués, conservés]].
 

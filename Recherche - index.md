@@ -6,6 +6,8 @@
 
 **Je vois une incohérence de données :** [[SQL - Modéliser, transiger et indexer]] → [[Concurrence - Consistance et isolation]] → [[Événements - Outbox, inbox et reprises]].
 
+**Je dois expliquer un système avec des diagrammes :** [[UML - index]] → [[UML - choisir et relire ses diagrammes]].
+
 **Je veux réduire le couplage :** [[Conception modulaire - SOLID, composition et injection]] → [[Architecture hexagonale - Domaine, ports et limites]] → [[Patterns - index]].
 
 **Un composant React réagit mal :** [[React - rendu état effets et asynchrone]] → [[TypeScript - types et frontieres runtime]] → [[UI - accessibilite et performance]].
