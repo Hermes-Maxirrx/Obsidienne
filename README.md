@@ -1,29 +1,29 @@
-# Obsidienne — coffre de révision
+# Obsidienne — cours de conception et fiches de projets
 
-Ouvrir [`Accueil.md`](Accueil.md) pour choisir un parcours, rechercher une notion ou retrouver l'un des huit projets. Les 50 fiches de départ sont des supports de révision : elles renvoient aux dépôts et aux vrais fichiers, sans recopier de secrets ni prétendre à des déploiements.
+Commencer par [`Accueil.md`](Accueil.md). Le coffre organise des **notions informatiques concrètes**, les **23 design patterns classiques** et un dossier conservé de **huit projets expliqués**. Les exemples théoriques ne sont pas des preuves d'exécution ; les fiches projets distinguent simulations, corrigés reconstruits et réalisations vérifiées.
 
-## Installer sur un autre ordinateur
+## Installer
 
-Accès à l'organisation GitHub `Hermes-Maxirrx` nécessaire : ce dépôt est privé.
+Le dépôt est privé : un accès à l'organisation `Hermes-Maxirrx` est requis.
 
 ```bash
 git clone git@github.com:Hermes-Maxirrx/Obsidienne.git
 ```
 
-Dans Obsidian : **Ouvrir un dossier comme coffre** → sélectionner le dossier `Obsidienne` cloné → ouvrir `Accueil.md`. Obsidian créera ses réglages locaux dans `.obsidian/`, qui ne sont pas versionnés.
+Dans Obsidian : **Ouvrir un dossier comme coffre** → sélectionner `Obsidienne` → ouvrir `Accueil.md`. Le dossier `.obsidian/` est ignoré par Git pour laisser chaque ordinateur gérer ses préférences.
 
-## Recevoir les nouveaux cours
+## Récupérer les mises à jour
 
-Dans le dossier cloné, sur la branche `main` :
+Depuis le clone, sur `main` :
 
 ```bash
 git pull --ff-only origin main
 ```
 
-Le `pull` est **manuel** : il ne se déclenche ni à l'ouverture d'Obsidian ni automatiquement quand une note est ajoutée sur GitHub. Si tu modifies des notes localement, sauvegarde d'abord tes changements sur une branche et propose une PR ; un `pull --ff-only` peut refuser de continuer si les fichiers locaux sont en conflit.
+Le téléchargement est **manuel**, pas automatique à l'ouverture d'Obsidian. En cas de modifications locales, sauvegarde-les d'abord sur une branche ; `--ff-only` refuse un historique divergent plutôt que d'écraser ton travail.
 
-Les chemins `/home/max/...` mentionnés dans certaines fiches correspondent **au serveur d'origine**. Sur une autre machine, ouvre les dépôts liés sur GitHub ou clone-les à ton tour ; les chemins locaux ne sont pas portables. Les liens directs vers les fichiers CloudShop ouvrent le dépôt GitHub privé et nécessitent un compte autorisé.
+Les chemins `/home/max/...` dans les fiches projets correspondent au serveur d'origine ; sur une autre machine, consulte ou clone les dépôts concernés. Les liens GitHub privés exigent une autorisation. Les diagrammes sont écrits en Mermaid dans les notes Markdown ; les cours restent lisibles en texte si l'affichage d'un schéma échoue.
 
-## Actualiser le coffre côté auteur
+## Contribuer
 
-Créer une branche thématique depuis `main`, modifier les notes, vérifier les wikilinks et les références, puis ouvrir une PR vers `main`. Après fusion, les autres copies du coffre reçoivent les changements au prochain `git pull --ff-only origin main`.
+Créer une branche depuis `main`, modifier les leçons, vérifier les wikilinks et les exemples, ouvrir une PR. Après fusion, les autres copies reçoivent la mise à jour au prochain `git pull --ff-only origin main`.

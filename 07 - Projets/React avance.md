@@ -1,17 +1,16 @@
-# React avancé — atelier de projets locaux
+# React avancé — état et asynchrone locaux
 
-**Sujet.** Application pédagogique React/TypeScript : trois projets fictifs, recherche, détail et tâches cochables/ajoutables. Les données résident dans `localStorage` du navigateur ; `src/api.ts` simule délai et pannes, mais **aucune API HTTP, compte, synchronisation ou serveur métier** n'existe. Source : `/home/max/react-avance/README.md` et `src/api.ts`.
+**Sujet.** `/home/max/react-avance` est une application de démonstration React et TypeScript : trois projets fictifs, une liste filtrable, des détails et des tâches à ajouter ou cocher. Les modifications restent dans le `localStorage` du navigateur. Malgré son nom, le module `api.ts` ne contacte aucun serveur : délais et pannes y sont simulés. Il n'y a ni compte, ni API HTTP, ni synchronisation entre appareils.
 
-## Ordre de lecture dans `/home/max/react-avance`
+**Conception.** Un modèle typé décrit projets et tâches ; leur progression est calculée à partir des tâches au lieu d'être dupliquée dans un état potentiellement contradictoire. Un reducer rend les transitions de chargement, sauvegarde et erreur explicites. Le chargement est annulable pour éviter qu'une ancienne réponse remplace une sélection plus récente ; une modification optimiste affiche immédiatement l'effet puis restaure un instantané si la sauvegarde échoue. À l'entrée du stockage, une vérification de structure à l'exécution complète les types TypeScript, lesquels disparaissent après compilation. Le formulaire garde le focus et associe le message d'erreur au champ.
 
-1. `README.md` → portée et parcours ; `src/model.ts` → types et données fictives.
-2. `docs/01-rendu-et-etat.md` → `src/main.tsx` → `src/App.tsx` → `src/store.tsx` : état dérivé, reducer, contexte, URL `?projet=`. Concept : [[React - etat rendu reducer contexte]].
-3. `docs/02-asynchrone-et-optimisme.md` → `src/api.ts` → `src/store.tsx` → `src/ProjectDetail.tsx` : annulation du chargement, snapshot, sauvegarde optimiste et rollback. Concept : [[React - effets asynchrone annulation]].
-4. `docs/03-formulaires-accessibilite.md` → `src/ProjectDetail.tsx` → `src/validation.ts` → `src/App.test.tsx` : titre, focus et message d'erreur. Concept : [[React - formulaires accessibilite]].
-5. `docs/04-performance-tests.md` → `src/App.tsx` → `src/ErrorBoundary.tsx` → `src/App.test.tsx` → `src/selection.test.tsx` → `src/validation.test.ts` : priorités, Suspense, boundary, URL invalide et limites des tests. Concept : [[React - performance Suspense erreurs]].
+**Ordre de lecture** (depuis la racine du dépôt) :
+1. `README.md` — démonstration et limites de validation.
+2. `src/model.ts` — modèle et données de départ.
+3. `src/api.ts` — stockage local et frontière non fiable.
+4. `src/store.tsx` — effets, reducer et rollback.
+5. `src/ProjectDetail.tsx` — interaction et formulaire.
 
-**Exemple à tracer.** Cocher une tâche : `ProjectDetail` construit une nouvelle liste, `store.update` affiche le changement, `api.saveProjects` écrit localement ou échoue, `rollback` rétablit le snapshot. Avec la simulation d'échec, l'état est restauré ; ce n'est pas un test de réseau.
+**Transfert et limites.** Relier [[React - rendu état effets et asynchrone]], [[TypeScript - types et frontieres runtime]], [[UI - accessibilite et performance]] et [[Tests - pyramide et TDD]]. L'optimisme ne démontre pas une gestion des conflits réseau ; plusieurs onglets peuvent écraser leurs données. Des tests sur DOM simulé ne remplacent pas une vérification complète au clavier et avec lecteurs d'écran.
 
-**Piège.** Le nom `api.ts` ne signifie pas backend. Le stockage peut être modifié par les scripts de l'origine et les onglets peuvent s'écraser. L'existence de tests DOM simulés ne certifie pas l'accessibilité réelle ou la performance.
-
-**Mini-exercice.** Suivre dans les fichiers ci-dessus un `localStorage` corrompu (`{`) : quel avertissement apparaît, est-il effacé dès la lecture, et qu'advient-il après une sauvegarde réussie ?
+**Question de révision.** Pourquoi valider les données lues de `localStorage` si `Project` possède déjà un type TypeScript ?

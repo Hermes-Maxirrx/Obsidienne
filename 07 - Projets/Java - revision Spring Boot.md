@@ -1,9 +1,16 @@
 # Java — révision Spring Boot
 
-**Nature.** Corrigé pédagogique reconstruit depuis les TP de Corentin Beuchet, **pas** le dépôt de l'enseignant ni un ancien travail personnel. Dépôt local : `/home/max/revision-java-spring-boot` ; remote `origin` : https://github.com/Hermes-Maxirrx/revision-java-spring-boot (dépôt potentiellement privé).
+**Sujet.** Ce corrigé pédagogique, reconstruit à partir des cours de Corentin Beuchet, fait évoluer une bibliothèque de livres : identité ISBN et collections Java, recherche, interface HTTP, puis persistance PostgreSQL. Ce n'est ni le dépôt du professeur ni un ancien travail personnel de l'étudiant. Les modules du dépôt `/home/max/revision-java-spring-boot` sont indépendants : ils comparent des solutions successives plutôt que les couches d'une seule application à déployer.
 
-**Parcours fichiers (depuis la racine).** `README.md` → `SOURCES.md` (attribution) → `docs/00-methode-de-revision.md` → `docs/TP1.md` et `tp1/src/main/java/fr/library/Book.java` → `docs/TP2.md` et `tp2/src/main/java/fr/library/Library.java` → `docs/TP3.md` et `tp3/src/main/java/fr/library/SearchCriteria.java`, `tp3/src/main/java/fr/library/Library.java` → `docs/TP4.md` et `tp4/src/main/java/fr/library/BookController.java`, `tp4/src/main/java/fr/library/LibraryExceptionHandler.java` → `docs/TP5.md` et `tp5/src/main/resources/db/changelog/changes/001-create-books-table.yaml`, `tp5/src/main/java/fr/library/BookService.java` → `tp5/src/test/java/fr/library/BookApiIT.java` → `VERIFICATION.md`.
+**Conception.** La route HTTP traduit les paramètres et délègue au service. Dans la version persistante, celui-ci choisit un tri SQL explicite et encadre les écritures par une transaction ; une migration Liquibase crée la table et impose l'unicité de l'ISBN. Vérifier avant l'insertion améliore le message d'erreur, mais ne ferme pas la course entre deux requêtes : la contrainte de base reste décisive. Un test intégrant HTTP, JPA et une vraie base jetable apporte une autre preuve qu'un test de contrôleur avec dépendances simulées.
 
-**À retenir.** TP1–TP5 sont des modules séparés : objet/Map, recherche moderne, HTTP, puis PostgreSQL. TP5 requiert Docker pour l'intégration. Les vérifications locales documentées ne prouvent pas une CI GitHub verte.
+**Ordre de lecture** (chemins relatifs au dépôt) :
+1. `README.md` — portée des modules et prérequis.
+2. `tp4/src/main/java/fr/library/BookController.java` — frontière HTTP.
+3. `tp5/src/main/java/fr/library/BookService.java` — transactions et tri.
+4. `tp5/src/main/resources/db/changelog/changes/001-create-books-table.yaml` — schéma et unicité.
+5. `tp5/src/test/java/fr/library/BookApiIT.java` — preuve d'intégration.
 
-Concepts : [[Java - objets et identité ISBN]] · [[Java - exceptions et collections]] · [[Java - Streams records sealed]] · [[Spring - HTTP DTO validation erreurs]] · [[Persistance - JPA Liquibase PostgreSQL]] · [[Java - index]].
+**Transfert et limites.** Relier [[Contrats API - HTTP, idempotence et pagination]], [[SQL - Modéliser, transiger et indexer]], [[Concurrence - Consistance et isolation]] et [[Tests - pyramide et TDD]] : aucun test isolé ne remplace une vérification à la frontière de la base. L'intégration requiert Docker ; les preuves locales consignées par le dépôt ne démontrent ni CI distante verte ni déploiement.
+
+**Question de révision.** Pourquoi `existsByIsbn` ne suffit-il pas à garantir l'unicité lors de deux créations simultanées ?
