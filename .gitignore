@@ -1,0 +1,8 @@
+# Préférences locales d'Obsidian et fichiers temporaires
+.obsidian/
+.trash/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
