@@ -1,20 +1,29 @@
-# Accueil — coffre de révision
+# Obsidienne — comprendre, choisir, appliquer
 
-Commence ici. Les notes sont **des cartes de lecture**, pas des copies des dépôts : chaque notion renvoie au code et au guide d'origine. Ce coffre est local à `/home/max/obsidian-vault` ; il ne modifie aucun projet.
+> [!abstract] Pour un développeur bac+5
+> Des cours de **concepts transférables**, pas la récitation de TP. Chaque cours part d'un problème, montre un mécanisme, ses compromis et quelques questions. Les fiches [[Projets - index|Projets]] restent disponibles pour relier la théorie à chacun des huit dépôts.
 
-## Je veux apprendre dans l'ordre
+```mermaid
+flowchart LR
+    F[Fondations] --> C[Conception]
+    C --> P[Design patterns]
+    C --> X[Frontend et API]
+    C --> Q[Qualité et livraison]
+    Q --> N[Cloud et coûts]
+    P --> R[Projets à étudier]
+    X --> R
+    N --> R
+```
 
-1. [[Comment reviser|Méthode de révision]] et [[Parcours - debutant a architecture|Parcours débutant → architecture]].
-2. [[Fondations - index|Réseau, données et notions de base]].
-3. Choisis une voie : [[Java - index|Java/Spring/architecture]], [[Frontend - index|React/TypeScript]], [[DevOps - index|qualité et DevOps]] ou [[Cloud - index|Azure/FinOps/IaC]].
-4. Termine par une application : [[Projets - index|les huit projets travaillés]].
+## Trois entrées, selon ton besoin
 
-## Je cherche un concept précis
+- **Apprendre dans l'ordre** → [[Cours - index|Parcours des notions concrètes]].
+- **Décider si un pattern aide** → [[Patterns - index|23 design patterns : intention, schéma, code et limites]].
+- **Comprendre un dépôt précis** → [[Projets - index|Huit projets expliqués, conservés]].
 
-Ouvre [[Recherche rapide]], ou utilise la recherche d'Obsidian pour un mot comme « outbox », « rollback », « RPO », « JPA », « Cucumber », « OIDC ». Les noms des notes commencent généralement par la technologie puis la notion.
+## Retrouver une réponse rapidement
 
-## Je veux retrouver un dépôt
+[[Recherche - index|Index par question]] : idempotence, transaction, outbox, effet React, provider, budget, sécurité… Cherche aussi directement un terme dans Obsidian.
 
-[[Projets - index]] contient les **huit projets locaux** examinés, leurs chemins et un ordre de lecture. Les dépôts du professeur Corentin Beuchet sont des *sources des trois corrigés de TP*, pas des projets de l'étudiant ; leurs liens et commits se trouvent dans les `SOURCES.md` de ces corrigés.
-
-> Les exemples pédagogiques ne prouvent pas une exécution externe. CloudShop n'a pas été déployé sur Azure ; l'API de l'atelier React est locale et simulée ; Lilian ne fait pas de réservation ; les paiements/expéditions Hexa Java sont simulés.
+> [!tip] Méthode de travail
+> Lis le **problème**, explique le schéma sans regarder, puis vérifie la section « quand ne pas utiliser » ou « piège ». Les projets donnent ensuite un terrain de lecture : leur statut réel est distinct des exemples théoriques.

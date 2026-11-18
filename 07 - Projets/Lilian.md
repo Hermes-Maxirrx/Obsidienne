@@ -1,16 +1,16 @@
-# Lilian — choix collectif et brouillon V2
+# Lilian — décision collective sans réservation
 
-**Sujet.** `/home/max/lilian` est une application Node 24, SQLite et interface JavaScript. Le catalogue V2 documente des restaurants lyonnais réels et conserve des hôtels parisiens fictifs clairement distincts. Le groupe vote, dispose de trois veto par personne et par tour, et aboutit à un **choix unanime et un brouillon copiable non envoyé**, jamais une réservation effective. Sources : `README.md`, `docs/backend.md`, `docs/v2-contract.md`.
+**Sujet.** `/home/max/lilian` est une application Node, SQLite et JavaScript pour choisir un lieu en groupe. Le catalogue distingue de vrais restaurants lyonnais sourcés et des hôtels parisiens fictifs. Les participants votent et disposent de trois veto par personne et par tour ; l'accord unanime produit un choix et un **brouillon copiable, non envoyé**. Il n'existe ni réservation effective, ni paiement, ni message transmis automatiquement à un établissement.
 
-## Ordre de lecture dans `/home/max/lilian`
+**Conception.** Le moteur conserve les états de groupe et impose côté serveur le quota de veto, le chrono et les transitions ; l'interface présente les choix sans devenir l'autorité des règles. Une transaction SQLite évite que deux actions simultanées consomment incohéremment le même quota. Les invitations et jetons personnels sont des capacités privées ; les préférences individuelles, notamment allergies et position, ne sont pas publiées au groupe ni insérées automatiquement dans le brouillon. Une disponibilité ou un tarif inconnu reste inconnu : `allergens: []` ne signifie jamais « sans allergènes ». La date de consultation des sources n'est pas une garantie de prix ou de disponibilité aujourd'hui.
 
-1. `README.md` → périmètre et limites ; `docs/v2-contract.md` → contraintes explicites, dont absence d'envoi et de données médicales dans le brouillon.
-2. `docs/sources-lyon.md` → `data/lyon-restaurants.json` → `catalog.mjs` : provenance, tarifs contextualisés, inconnues et distinction réel/démo. La vérification documentaire est datée du 6 novembre 2026, non une promesse de prix actuels.
-3. `docs/backend.md` → `package.json` → `server.mjs` → `model.mjs` : API de groupes, jetons privés, moteur, SQLite et transactions. Concept : [[Node - SQLite API et limites]].
-4. `public/index.html` → `public/app.js` → `public/styles.css` : exploration, votes, chrono, brouillon et liens officiels ; `tests/backend-v2.test.mjs` → `tests/backend-v2-data.test.mjs` → `tests/browser_qa_v2.py` → `docs/qa-v2.md` : comportements testés et limites datées.
+**Ordre de lecture** (depuis la racine du dépôt) :
+1. `README.md` — usage et limites.
+2. `docs/v2-contract.md` — engagements de confidentialité et absence d'envoi.
+3. `data/lyon-restaurants.json` — provenance et inconnues du catalogue.
+4. `model.mjs` — règles et transactions.
+5. `server.mjs` — contrats HTTP et frontière publique.
 
-**Exemple à tracer.** Dans `model.mjs`, `projectVenue` signale `budgetUnverified` si un tarif est inconnu et `requiresAllergyConfirmation` si un membre a déclaré des allergies pour un restaurant réel. Le texte final ne reprend pas automatiquement ces préférences privées. `server.mjs` publie l'état et les routes ; la phase interne `reserved` signifie ici brouillon (`status: "draft"`, `simulated: true`), non confirmation réelle.
+**Transfert et limites.** Comparer [[Concurrence - Consistance et isolation]], [[Contrats API - HTTP, idempotence et pagination]], [[SQL - Modéliser, transiger et indexer]] et [[UI - accessibilite et performance]]. Une QA datée et un tunnel temporaire n'établissent pas que le service est actuellement joignable. Confirmer directement prix, disponibilité et allergies avec le restaurant ; la copie du brouillon n'est pas une soumission.
 
-**Piège.** Une liste `allergens: []` n'atteste aucune innocuité ; demander confirmation au restaurant. Un tarif est un repère de plat/formule sourcé, pas un prix total garanti ; pas de réduction, partenariat ou disponibilité inventés. Aucun e-mail, SMS, WhatsApp, formulaire externe ou paiement n'est envoyé. La QA datée ne prouve pas que le tunnel temporaire est actuellement accessible.
-
-**Mini-exercice.** Suivre de `public/app.js` à `server.mjs` et `model.mjs` la réponse à un quatrième veto ; identifier la règle serveur et l'indication UI, puis expliquer pourquoi un nouveau tour remet le quota à trois sans effacer les exclusions précédentes.
+**Question de révision.** Pourquoi faut-il contrôler le veto dans une transaction serveur plutôt que seulement désactiver un bouton après trois clics ?
