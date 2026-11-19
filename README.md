@@ -1,6 +1,6 @@
 # Obsidienne — cours de conception et fiches de projets
 
-Commencer par [`Accueil.md`](Accueil.md). Le coffre organise des **notions informatiques concrètes**, un [cours UML détaillé](Cours/06-UML/UML%20-%20index.md), les **23 design patterns classiques** et un dossier conservé de **huit projets expliqués**. Les exemples théoriques ne sont pas des preuves d'exécution ; les fiches projets distinguent simulations, corrigés reconstruits et réalisations vérifiées.
+Commencer par [`Accueil.md`](Accueil.md). Le coffre organise des **notions informatiques concrètes**, un [cours UML détaillé](Cours/06-UML/UML%20-%20index.md), les **23 design patterns classiques** et un dossier conservé de **neuf projets expliqués**. Les exemples théoriques ne sont pas des preuves d'exécution ; les fiches projets distinguent simulations, corrigés reconstruits et réalisations vérifiées.
 
 ## Installer
 

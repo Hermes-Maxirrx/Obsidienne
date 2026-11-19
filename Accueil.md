@@ -1,7 +1,7 @@
 # Obsidienne — comprendre, choisir, appliquer
 
 > [!abstract] Pour un développeur bac+5
-> Des cours de **concepts transférables**, pas la récitation de TP. Chaque cours part d'un problème, montre un mécanisme, ses compromis et quelques questions. Les fiches [[Projets - index|Projets]] restent disponibles pour relier la théorie à chacun des huit dépôts.
+> Des cours de **concepts transférables**, pas la récitation de TP. Chaque cours part d'un problème, montre un mécanisme, ses compromis et quelques questions. Les fiches [[Projets - index|Projets]] restent disponibles pour relier la théorie à chacun des neuf dépôts.
 
 ```mermaid
 flowchart LR
@@ -22,7 +22,7 @@ flowchart LR
 - **Apprendre dans l'ordre** → [[Cours - index|Parcours des notions concrètes]].
 - **Modéliser un système** → [[UML - index|Cours UML détaillé : sept vues, notation et cohérence]].
 - **Décider si un pattern aide** → [[Patterns - index|23 design patterns : intention, schéma, code et limites]].
-- **Comprendre un dépôt précis** → [[Projets - index|Huit projets expliqués, conservés]].
+- **Comprendre un dépôt précis** → [[Projets - index|Neuf projets expliqués, conservés]].
 
 ## Retrouver une réponse rapidement
 
